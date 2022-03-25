@@ -95,7 +95,7 @@ resource "aws_instance" "dev" {
   instance_type               = "t2.micro"
   security_groups             = [aws_security_group.tf-sg.id]
   associate_public_ip_address = true
-  key_name                    = aws_key_pair.tf-key.key_name
+  key_name                    = aws_key_pair.tf-key.id
   subnet_id                   = aws_subnet.tf-subnet.id
   user_data                   = <<-EOF
          #!/bin/bash
@@ -112,7 +112,7 @@ resource "aws_instance" "test" {
   instance_type               = "t2.micro"
   security_groups             = [aws_security_group.tf-sg.id]
   associate_public_ip_address = true
-  key_name                    = aws_key_pair.tf-key.key_name
+  key_name                    = aws_key_pair.tf-key.id
   subnet_id                   = aws_subnet.tf-subnet.id
   user_data                   = <<-EOF
          #!/bin/bash
@@ -129,7 +129,7 @@ resource "aws_instance" "prod" {
   instance_type               = "t2.micro"
   security_groups             = [aws_security_group.tf-sg.id]
   associate_public_ip_address = true
-  key_name                    = aws_key_pair.tf-key.key_name
+  key_name                    = aws_key_pair.tf-key.id
   subnet_id                   = aws_subnet.tf-subnet.id
   user_data                   = <<-EOF
          #!/bin/bash
