@@ -83,7 +83,7 @@ resource "aws_route_table_association" "route-table" {
 
 # key pair
 resource "aws_key_pair" "tf-key" {
-  key_name   = "key-pair"
+  key_name   = "Key-pair"
   public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDqANc/6FZYL222gRmeWbiWJB679YBhRnu4Qne6tKAaEaHge37MIe4V4uq+9TkLdegvA8RfQdazsYBcJRze8wr3fWMUZSp12K7X/vCfr1bUB6vbcqFxsWAiWOGye5Osc0Dx3DVXvCf45fSdtoaHhIwKzsaeUCq/hLlIhk87LInfBQ2Eq5HsJ6sqNKhWu6kZFcOz6jMlkIjiXCNZvmA0G3liiBqz7VuYcLpx19L2LDPrLPISd9/MVPTl16F3t2rub9CzgaBOolngAW9r3NUO0Vf6UhaAvM5yFTmj2NfY/tPqLayIPrR6SFvjwbT82AZKtRbzbX9Z2u8+fp9G0y0b/sIYHJyZK6+r1zd3y5WCuO1J5nUeLHlBlUAGZXTw0bfciMG6kMejsqg4m3krLu+//oMo3+LXOzNtun6O/EN19S6uRam7HxXia5psToXi3rxoiCI+gnPVqUqIsvix4oJH11rRWagBV1jSFcVlY/2VgHrx82Ix84oUrtSDnCaPC9lMsn8= sford1@scratch-2022"
 }
 # make three instances
