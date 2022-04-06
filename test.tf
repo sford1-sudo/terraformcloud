@@ -90,9 +90,9 @@ resource "aws_key_pair" "tf-key" {
 }
 # make three instances
 
-resource "aws_instance" "dev" {
+resource "aws_instance" "exam" {
   ami                         = "ami-04505e74c0741db8d"
-  instance_type               = "t2.micro"
+  instance_type               = "t2.medium"
   security_groups             = [aws_security_group.tf-sg.id]
   associate_public_ip_address = true
   key_name                    = aws_key_pair.tf-key.id
@@ -104,52 +104,14 @@ resource "aws_instance" "dev" {
          source /tmp/install.sh
          EOF
   tags = {
-    Name = "dev"
+    Name = "exam"
   }
 }
-resource "aws_instance" "test" {
-  ami                         = "ami-04505e74c0741db8d"
-  instance_type               = "t2.micro"
-  security_groups             = [aws_security_group.tf-sg.id]
-  associate_public_ip_address = true
-  key_name                    = aws_key_pair.tf-key.id
-  subnet_id                   = aws_subnet.tf-subnet.id
-  user_data                   = <<-EOF
-         #!/bin/bash
-         wget http://cit.dixie.edu/it/3110/joe-notes-2021/terraform/install.sh -O /tmp/install.sh
-         chmod +x /tmp/install.sh
-         source /tmp/install.sh
-         EOF
-  tags = {
-    Name = "test"
-  }
-}
-resource "aws_instance" "prod" {
-  ami                         = "ami-04505e74c0741db8d"
-  instance_type               = "t2.micro"
-  security_groups             = [aws_security_group.tf-sg.id]
-  associate_public_ip_address = true
-  key_name                    = aws_key_pair.tf-key.id
-  subnet_id                   = aws_subnet.tf-subnet.id
-  user_data                   = <<-EOF
-         #!/bin/bash
-         wget http://cit.dixie.edu/it/3110/joe-notes-2021/terraform/install.sh -O /tmp/install.sh
-         chmod +x /tmp/install.sh
-         source /tmp/install.sh
-         EOF
-  tags = {
-    Name = "prod"
-  }
-}
-output "public_IP_for_dev" {
+
+output "public_IP_for_exam" {
   #description = "public ip for dev instance"
-  value       = aws_instance.dev.public_ip
+  value       = aws_instance.exam.public_ip
 }
-output "public_IP_for_test" {
-  #description = "public ip for test instance"
-  value       = aws_instance.test.public_ip
-}
-output "public_IP_for_prod" {
-  #description = "public ip for prod instance"
-  value       = aws_instance.prod.public_ip
-}
+output "name_for_VM" {
+  value       = aws_instance.exam.Name
+
