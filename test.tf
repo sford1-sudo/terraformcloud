@@ -114,4 +114,4 @@ output "public_IP_for_exam" {
 }
 output "name_for_VM" {
   value       = aws_instance.exam.Name
-
+}
