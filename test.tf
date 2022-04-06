@@ -97,12 +97,7 @@ resource "aws_instance" "exam" {
   associate_public_ip_address = true
   key_name                    = aws_key_pair.tf-key.id
   subnet_id                   = aws_subnet.tf-subnet.id
-  user_data                   = <<-EOF
-         #!/bin/bash
-         wget http://cit.dixie.edu/it/3110/joe-notes-2021/terraform/install.sh -O /tmp/install.sh
-         chmod +x /tmp/install.sh
-         source /tmp/install.sh
-         EOF
+
   tags = {
     Name = "exam"
   }
@@ -113,5 +108,5 @@ output "public_IP_for_exam" {
   value       = aws_instance.exam.public_ip
 }
 output "name_for_VM" {
-  value       = aws_instance.exam.Name
+  value       = aws_instance.exam.tags
 }
